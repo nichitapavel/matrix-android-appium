@@ -1,0 +1,8 @@
+{
+  "hub": "http://localhost:4723/wd/hub",
+  "devices": [{
+    "platform": "ANDROID",
+    "udid": "192.168.0.162:5555",
+    "name": "odroidxu3"
+  }]
+}
