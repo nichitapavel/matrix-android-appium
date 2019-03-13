@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
     WebDriver driver;
+    WebElement status;
 
     public MainPage(AppiumSession session) {
         this.driver = session.getDriver();
@@ -35,15 +36,18 @@ public class MainPage {
     }
 
     public boolean isFinished(){
-        WebDriverWait wait = new WebDriverWait(this.driver, 5);
+        if (this.status == null) {
+            WebDriverWait wait = new WebDriverWait(this.driver, 5);
 
-        WebElement status = wait.until(
-                ExpectedConditions.presenceOfElementLocated(
-                        By.id("status")
-                )
-        );
+            this.status = wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            By.id("status")
+                    )
+            );
+        }
 
-        if (status.getText().equals("Done.")) {
+
+        if (this.status.getText().equals("Done.")) {
             return true;
         }
         return false;
