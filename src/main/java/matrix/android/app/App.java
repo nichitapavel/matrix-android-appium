@@ -5,6 +5,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+/* TODO slighty off-topic, but when printing on screen a big matrix appium fails to detect
+   when it has finished. Is possible that printing a big matrix locks the main ui thread and
+   that leaves appium without access to elements, but why when is finished it does not get
+   access back?
+*/
 public class App {
     public static void main(String[] args) {
         boolean print = false;
