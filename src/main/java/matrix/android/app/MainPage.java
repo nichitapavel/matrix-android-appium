@@ -13,7 +13,7 @@ public class MainPage {
         this.driver = session.getDriver();
     }
 
-    public void fillData(String size, String module, boolean print) {
+    public void fillData(String size, String module, boolean print, String httpEndpoint) {
         this.driver.findElement(By.id("matrix_size")).sendKeys(size);
         this.driver.findElement(By.id("matrix_module")).sendKeys(module);
         if (print){
@@ -27,6 +27,7 @@ public class MainPage {
                 printButton.click();
             }
         }
+        this.driver.findElement(By.id("http_endpoint")).sendKeys(httpEndpoint);
     }
 
     public void compute() {

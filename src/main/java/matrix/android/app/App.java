@@ -8,10 +8,12 @@ import java.util.Date;
 public class App {
     public static void main(String[] args) {
         boolean print = false;
+        String httpEndpoint = "";
         try {
             Integer.parseInt(args[0]);
             Integer.parseInt(args[1]);
             print = Boolean.parseBoolean(args[2]);
+            httpEndpoint = args[3];
         } catch (Exception ex) {
             System.out.println("Something is wrong with your arguments");
             System.exit(1);
@@ -27,7 +29,7 @@ public class App {
         );
         MainPage matrixApp = new MainPage(session);
 
-        matrixApp.fillData(size, module, print);
+        matrixApp.fillData(size, module, print, httpEndpoint);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS");
         System.out.println("Job started at: " + dateFormat.format(new Date()));
         matrixApp.compute();
