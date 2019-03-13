@@ -39,4 +39,4 @@ By default the generated binary uses java runtime returned from `which java`, us
 to use Oracle JRE you must specify JAVA_HOME to that runtime, i.e.: 
 `JAVA_HOME=/opt/jre1.8.0_202 ./matrix-android-appium 10 10 true`
 
-## Current version: 0.1
+## Current version: 0.2-beta-1
