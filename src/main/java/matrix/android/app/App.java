@@ -39,7 +39,16 @@ public class App {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS");
         System.out.println("Job started at: " + dateFormat.format(new Date()));
         matrixApp.compute();
-        while (!matrixApp.isFinished()) {}
+
+        while (!matrixApp.isFinished()) {
+            // TODO I hate sleep, I want no sleep, sleep is bad, maybe a custom ExpectedCondition is better
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         System.out.println("Job finished at: " + dateFormat.format(new Date()));
         System.out.println("Data from computation:");
         System.out.println(matrixApp.getData());
