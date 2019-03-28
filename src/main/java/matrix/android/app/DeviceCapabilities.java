@@ -17,6 +17,13 @@ public class DeviceCapabilities {
         this.desiredCap.setCapability(MobileCapabilityType.DEVICE_NAME, json.getAsJsonObject().get("name"));
     }
 
+    public DeviceCapabilities(String device) {
+        this.desiredCap.setPlatform(Platform.ANDROID);
+        this.desiredCap.setCapability("appPackage","es.ull.hpcg.matrixandroidapp");
+        this.desiredCap.setCapability("appActivity", "MainActivity");
+        this.desiredCap.setCapability(MobileCapabilityType.UDID, device);
+        this.desiredCap.setCapability(MobileCapabilityType.DEVICE_NAME, "default");
+    }
 
     public DesiredCapabilities getCapabilities() {
         return this.desiredCap;

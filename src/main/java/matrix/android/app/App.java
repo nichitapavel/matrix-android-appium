@@ -4,6 +4,7 @@ package matrix.android.app;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 
 /* TODO slighty off-topic, but when printing on screen a big matrix appium fails to detect
@@ -13,26 +14,34 @@ import java.util.Date;
 */
 public class App {
     public static void main(String[] args) {
+        Map parsedArgs = Parser.parse(args);
+
+        /****************************************************************************************************/
+
         boolean print = false;
-        String httpEndpoint = "";
-        try {
-            Integer.parseInt(args[0]);
-            Integer.parseInt(args[1]);
-            print = Boolean.parseBoolean(args[2]);
-            httpEndpoint = args[3];
-        } catch (Exception ex) {
-            System.out.println("Something is wrong with your arguments");
-            System.exit(1);
+        if (parsedArgs.get("print") != null) {
+            print = true;
         }
+        String size = parsedArgs.get("size").toString();
+        String module = parsedArgs.get("module").toString();
+        String httpEndpoint = parsedArgs.get("http_endpoint").toString();
 
-        String size = args[0], module = args[1];
+
         JSONConfig jsonConfig = new JSONConfig();
-
-
+        DeviceCapabilities deviceCapabilities = null;
+        if (parsedArgs.get("device") != null) {
+            deviceCapabilities = new DeviceCapabilities(
+                    parsedArgs.get("device").toString()
+            );
+        } else {
+            deviceCapabilities = jsonConfig.getDevice();
+        }
         AppiumSession session = new AppiumSession(
                 jsonConfig.getHub(),
-                jsonConfig.getDevice()
+                deviceCapabilities
         );
+
+
         MainPage matrixApp = new MainPage(session);
 
         matrixApp.fillData(size, module, print, httpEndpoint);
