@@ -35,6 +35,11 @@ public class Parser {
                 .help("adb udid of device to be used by appium")
                 .required(false)
                 .type(String.class);
+        parser.addArgument("--system-port")
+                .help("appium system port to communicate with devices, when running multiple device" +
+                        "is better to set it manually to different ports.")
+                .required(false)
+                .type(int.class);
 
         Namespace ns = null;
         try {
