@@ -3,6 +3,7 @@
   "devices": [{
     "platform": "ANDROID",
     "udid": "192.168.0.162:5555",
-    "name": "odroidxu3"
+    "name": "odroidxu3",
+    "systemPort": 8199
   }]
 }
