@@ -41,8 +41,4 @@ public class JSONConfig {
         JsonElement device = this.json.getAsJsonObject().get("devices").getAsJsonArray().get(0);
         return new DeviceCapabilities(device);
     }
-
-
-
-
 }
