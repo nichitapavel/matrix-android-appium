@@ -29,7 +29,7 @@ public class Parser {
                 .help("Print the all matrixes")
                 .type(boolean.class);
         parser.addArgument("-e", "--http-endpoint").
-                help("Print the all matrixes")
+                help("HTTP endpoint to mark when operations start and finish")
                 .type(String.class);
         parser.addArgument("-d", "--device")
                 .help("adb udid of device to be used by appium")
