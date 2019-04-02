@@ -19,19 +19,24 @@ public class App {
         /****************************************************************************************************/
 
         boolean print = false;
+        int systemPort = 8199;
         if (parsedArgs.get("print") != null) {
             print = true;
         }
+        if (parsedArgs.get("system_port") != null) {
+            systemPort = (int) parsedArgs.get("system_port");
+        }
+
         String size = parsedArgs.get("size").toString();
         String module = parsedArgs.get("module").toString();
         String httpEndpoint = parsedArgs.get("http_endpoint").toString();
-
 
         JSONConfig jsonConfig = new JSONConfig();
         DeviceCapabilities deviceCapabilities = null;
         if (parsedArgs.get("device") != null) {
             deviceCapabilities = new DeviceCapabilities(
-                    parsedArgs.get("device").toString()
+                    parsedArgs.get("device").toString(),
+                    systemPort
             );
         } else {
             deviceCapabilities = jsonConfig.getDevice();
