@@ -1,6 +1,6 @@
 {
   "name": "appium-setup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Appium easy install",
   "repository": {
     "type": "git",
@@ -16,6 +16,6 @@
   "author": "Pavel Nichita <pnichita@ull.edu.es> (https://es.linkedin.com/in/pavelnichita)",
   "homepage": "https://github.com/nichitapavel/matrix-android-appium#readme",
   "dependencies": {
-    "appium": "^1.10.1"
+    "appium": "^1.12.1"
   }
 }
