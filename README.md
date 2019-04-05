@@ -6,11 +6,14 @@
 
 
 ## Appium
-An appium server with an Android device connected and with the matrix app installed must be previously configured.
-This topic is not trivial, hopefully with *npm install* package can be somehow alleviated.  
-The appium server (*hub*) and android device details must be copied into **appium-conf.json** file, just
-change the available fields.  
-**TODO** add npm install package for appium.
+An appium server with an Android device connected and with the matrix app installed must be previously configured.  
+From version 0.3 **npm install** is supported. Go to the distribution's  bin folder, there you'll find _package.json_
+and _package-lock.json_ , if you have **node** and **npm** installed and configured properly just type in cmd
+`npm install`.  
+To run appium type `node_modules/.bin/appium` in the bin folder. Is better if you run appium in a screen session.  
+The appium server (*hub*) details must be copied into **appium-conf.json** file, just change the available fields.
+The *device* fields are optional as long as you use available cmd arguments, otherwise change them to your desired
+values.  
 
 
 ## Instructions
@@ -22,16 +25,33 @@ Make use of the compiled app:
 - extract either **.zip** or **.tar** archive
 - go to *matrix-android-appium-<version>/bin/*, here are the executables **matrix-android-appium**/
 **matrix-android-appium.bat**
-- execute by typing `./matrix-android-appium 10 10 true` or `matrix-android-appium 10 10 true` 
-- keep in mind that **appium-conf.json** must be where you execute
+- execute by typing `./matrix-android-appium -s 10 -m 10 -e http://192.168.26.5:5001/message` or
+ `./matrix-android-appium -s 10 -m 10 -e http://192.168.26.5:5001/message -p`
+- keep in mind that **appium-conf.json** must be where you execute and that appium server must be running.
+
+Install and run Appium server:
+- go to *build/distributions/*
+- extract either **.zip** or **.tar** archive
+- go to *matrix-android-appium-<version>/bin/*, here are the executables **package.json**/ and
+**package-lock.json**
+- install appium by typing `npm install` 
+- run appium by typing `node_modules/.bin/appium`
 
 
 ## Arguments
-The app has 3 arguments, all are required. These arguments are send to the Android app for control. 
-- **String** type **Integer** tells the size of the matrixes (only square matrixes are possible)
-- **String** type **Integer** tells the maximum value of a coordinate, i.e.: if this value is 40 you
-will never have in the matrix a number equal or higher to 40
-- **String** type **boolean** `false` or `true` tells if you want the matrixes to be printed
+The app has 6 arguments, 3 are required. These arguments are send to the Android app for control.
+The `device` and `system-port` are used to define witch device will run the app.
+- `-s|--size` _(Required)_ **String** type **Integer** tells the size of the matrixes
+(only square matrixes are possible).
+- `-m|--module` _(Required)_ **String** type **Integer** tells the maximum value of a coordinate,
+i.e.: if this value is 40 you will never have in the matrix A and B a number equal or higher to 40.
+- `-e|--http-endpoint` _(Required)_ **String** type **URL** `http://192.168.26.5:5001/message` tells where
+devices must send HTTP requests to mark current operation.
+- `-p|--print` _(Optional)_ tells if you want the matrixes to be printed.
+- `-d|--device` _(Optional)_ **String** unique device identification (udid), listed with `adb devices`. Optional if
+available in **appium-conf.json**.
+- `--system-port` _(Optional)_ **String** type **Integer**, recommended in case multiple android devices are
+simultaneously used.
 
 
 ## Oracle vs Open JRE
