@@ -4,7 +4,6 @@ package matrix.android.app;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 
 
 /* TODO slighty off-topic, but when printing on screen a big matrix appium fails to detect
@@ -14,42 +13,15 @@ import java.util.Map;
 */
 public class App {
     public static void main(String[] args) {
-        Map parsedArgs = Parser.parse(args);
 
-        /****************************************************************************************************/
-
-        boolean print = false;
-        int systemPort = 8199;
-        if (parsedArgs.get("print") != null) {
-            print = true;
-        }
-        if (parsedArgs.get("system_port") != null) {
-            systemPort = (int) parsedArgs.get("system_port");
-        }
-
-        String size = parsedArgs.get("size").toString();
-        String module = parsedArgs.get("module").toString();
-        String httpEndpoint = parsedArgs.get("http_endpoint").toString();
-
-        JSONConfig jsonConfig = new JSONConfig();
-        DeviceCapabilities deviceCapabilities = null;
-        if (parsedArgs.get("device") != null) {
-            deviceCapabilities = new DeviceCapabilities(
-                    parsedArgs.get("device").toString(),
-                    systemPort
-            );
-        } else {
-            deviceCapabilities = jsonConfig.getDevice();
-        }
+        Config config = Config.getConfig(args);
         AppiumSession session = new AppiumSession(
-                jsonConfig.getHub(),
-                deviceCapabilities
+                config.getHub(),
+                config.getDevice()
         );
-
-
         MainPage matrixApp = new MainPage(session);
 
-        matrixApp.fillData(size, module, print, httpEndpoint);
+        matrixApp.fillData(config.getSize(), config.getModule(), config.isPrint(), config.getHttpEndpoint());
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS");
         System.out.println("Job started at: " + dateFormat.format(new Date()));
         matrixApp.compute();
