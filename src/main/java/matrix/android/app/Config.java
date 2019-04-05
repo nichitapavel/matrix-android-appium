@@ -15,11 +15,7 @@ public class Config {
         Map parsedArgs = Parser.parse(args);
         JSONConfig jsonConfig = new JSONConfig();
         DeviceCapabilities deviceCapabilities;
-        boolean print = false;
-
-        if (parsedArgs.get("print") != null) {
-            print = true;
-        }
+        boolean print = (boolean) parsedArgs.get("print");
 
         if (parsedArgs.get("device") != null) {
             deviceCapabilities = new DeviceCapabilities(

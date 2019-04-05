@@ -1,6 +1,7 @@
 package matrix.android.app;
 
 import net.sourceforge.argparse4j.ArgumentParsers;
+import net.sourceforge.argparse4j.impl.Arguments;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
@@ -27,7 +28,8 @@ public class Parser {
                 .required(true);
         parser.addArgument("-p", "--print")
                 .help("Print the all matrixes")
-                .type(boolean.class);
+                .setDefault(Arguments.storeFalse())
+                .action(Arguments.storeTrue());
         parser.addArgument("-e", "--http-endpoint").
                 help("HTTP endpoint to mark when operations start and finish")
                 .type(String.class);
