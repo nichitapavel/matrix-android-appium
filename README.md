@@ -26,7 +26,7 @@ Make use of the compiled app:
 - go to *matrix-android-appium-<version>/bin/*, here are the executables **matrix-android-appium**/
 **matrix-android-appium.bat**
 - execute by typing `./matrix-android-appium -s 10 -m 10 -e http://192.168.26.5:5001/message` or
- `./matrix-android-appium -s 10 -m 10 -e http://192.168.26.5:5001/message -p`
+ `./matrix-android-appium -s 10 -m 10 -e http://192.168.26.5:5001/message -p -d FJASDOQX --system-port 8199`
 - keep in mind that **appium-conf.json** must be where you execute and that appium server must be running.
 
 Install and run Appium server:
