@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'es.ull.hpcg'
-version '0.3-beta-01'
+version '0.3'
 
 sourceCompatibility = 1.8
 
