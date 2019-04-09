@@ -47,7 +47,7 @@ The `device` and `system-port` are used to define witch device will run the app.
 i.e.: if this value is 40 you will never have in the matrix A and B a number equal or higher to 40.
 - `-e|--http-endpoint` _(Required)_ **String** type **URL** `http://192.168.26.5:5001/message` tells where
 devices must send HTTP requests to mark current operation.
-- `-p|--print` _(Optional)_ tells if you want the matrixes to be printed.
+- `-p|--print` _(Optional)_ tells if you want the matrixes to be printed, no value required.
 - `-d|--device` _(Optional)_ **String** unique device identification (udid), listed with `adb devices`. Optional if
 available in **appium-conf.json**.
 - `--system-port` _(Optional)_ **String** type **Integer**, recommended in case multiple android devices are
@@ -59,5 +59,5 @@ By default the generated binary uses java runtime returned from `which java`, us
 to use Oracle JRE you must specify JAVA_HOME to that runtime, i.e.: 
 `JAVA_HOME=/opt/jre1.8.0_202 ./matrix-android-appium 10 10 true`
 
-## Current version: 0.3
+## Current version: 0.3.1
 ## Matrix Android app compatibility: from v1.3 to v1.4.1-int
