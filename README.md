@@ -60,4 +60,4 @@ to use Oracle JRE you must specify JAVA_HOME to that runtime, i.e.:
 `JAVA_HOME=/opt/jre1.8.0_202 ./matrix-android-appium 10 10 true`
 
 ## Current version: 0.3.1
-## Matrix Android app compatibility: from v1.3 to v1.4.1-int
+## Matrix Android app compatibility: from v1.3 to v1.4.2-*
